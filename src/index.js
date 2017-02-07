@@ -1,7 +1,7 @@
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import React from 'react';
-import { Router, Route, IndexRoute, hashHistory } from 'react-router';
+import { Router, Route, IndexRoute, browserHistory } from 'react-router';
 // import agent from './agent';
 // import history from 'history';
 import store from './store';
@@ -21,7 +21,7 @@ import Authorize from './components/auth/Authorize'
 
 ReactDOM.render((
   <Provider store={store}>
-    <Router history={hashHistory}>
+    <Router history={browserHistory}>
       <Route path="/" component={App}>
         <IndexRoute component={Home} />
         <Route path="login" component={Login} />

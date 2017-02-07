@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import { hashHistory } from 'react-router';
+import { browserHistory } from 'react-router';
 import cookie from 'react-cookie';
 
 // import { SET_REDIRECT_URL, AUTHORIZE } from '../../redux/actions/actionTypes';
@@ -52,7 +52,7 @@ class AuthorizationContainer extends React.Component {
       // then redirect (we use a React Router method)
       console.log("currentURL:"+currentURL);
       this.props.setRedirectUrl(currentURL);
-      hashHistory.replace("login");
+      browserHistory.replace("login");
     }
 
   }
