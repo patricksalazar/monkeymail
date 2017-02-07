@@ -1,9 +1,8 @@
 import ListErrors from './ListErrors';
 import React from 'react';
-import { Link } from 'react-router';
+// import { Link } from 'react-router';
 import agent from '../agent';
 import { connect } from 'react-redux';
-import store from '../store';
 
 class SettingsForm extends React.Component {
   constructor() {
@@ -143,7 +142,7 @@ class Settings extends React.Component {
 
               <h1 className="text-xs-center">Your Settings</h1>
 
-              <ListErrors errors={this.props.errors}></ListErrors>
+              <ListErrors errors={this.props.errors} />
 
               <SettingsForm
                 currentUser={this.props.currentUser}

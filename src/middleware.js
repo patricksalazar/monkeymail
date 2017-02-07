@@ -1,5 +1,3 @@
-'use strict';
-
 import agent from './agent';
 
 const promiseMiddleware = store => next => action => {
@@ -11,7 +9,7 @@ const promiseMiddleware = store => next => action => {
 
     action.payload.then(
       res => {
-        const currentState = store.getState()
+        const currentState = store.getState();
         if (!skipTracking && currentState.viewChangeCounter !== currentView) {
           return
         }
@@ -21,7 +19,7 @@ const promiseMiddleware = store => next => action => {
         store.dispatch(action);
       },
       error => {
-        const currentState = store.getState()
+        const currentState = store.getState();
         if (!skipTracking && currentState.viewChangeCounter !== currentView) {
           return
         }

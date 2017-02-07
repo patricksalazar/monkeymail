@@ -3,12 +3,14 @@ import Header from './Header';
 import React from 'react';
 import { connect } from 'react-redux';
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state, ownProps) => ({
   appLoaded: state.common.appLoaded,
   appName: state.common.appName,
   currentUser: state.common.currentUser,
-  redirectTo: state.common.redirectTo
+  redirectTo: state.common.redirectTo,
+  query: ownProps.location.query
 });
+
 
 const mapDispatchToProps = dispatch => ({
   onLoad: (payload, token) =>
@@ -20,6 +22,7 @@ const mapDispatchToProps = dispatch => ({
 class App extends React.Component {
   componentWillReceiveProps(nextProps) {
     if (nextProps.redirectTo) {
+      console.log("redirectTo:"+nextProps.redirectTo);
       this.context.router.replace(nextProps.redirectTo);
       this.props.onRedirect();
     }
@@ -29,6 +32,11 @@ class App extends React.Component {
     const token = window.localStorage.getItem('jwt');
     if (token) {
       agent.setToken(token);
+    }else {
+      let query = this.props.query;
+      console.log("query233:"+JSON.stringify(query));
+      let code = query.code;
+      console.log("code4:"+code);
     }
 
     this.props.onLoad(token ? agent.Auth.current() : null, token);

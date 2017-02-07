@@ -8,7 +8,7 @@ const YourFeedTab = props => {
     const clickHandler = ev => {
       ev.preventDefault();
       props.onTabClick('feed', agent.Articles.feed());
-    }
+    };
 
     return (
       <li className="nav-item">

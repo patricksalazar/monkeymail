@@ -1,5 +1,3 @@
-'use strict';
-
 export default (state = {}, action) => {
   switch (action.type) {
     case 'EDITOR_PAGE_LOADED':
@@ -24,7 +22,7 @@ export default (state = {}, action) => {
       if (action.subtype === 'ARTICLE_SUBMITTED') {
         return { ...state, inProgress: true };
       }
-      break;
+      return state;
     case 'ADD_TAG':
       return {
         ...state,
@@ -38,7 +36,7 @@ export default (state = {}, action) => {
       };
     case 'UPDATE_FIELD_EDITOR':
       return { ...state, [action.key]: action.value };
+    default:
+      return state;
   }
-
-  return state;
 };

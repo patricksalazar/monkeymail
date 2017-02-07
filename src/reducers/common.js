@@ -1,5 +1,3 @@
-'use strict';
-
 const defaultState = {
   appName: 'Conduit',
   token: null,
@@ -47,7 +45,7 @@ export default (state = defaultState, action) => {
     case 'LOGIN_PAGE_UNLOADED':
     case 'REGISTER_PAGE_UNLOADED':
       return { ...state, viewChangeCounter: state.viewChangeCounter + 1 };
+    default:
+      return state;
   }
-
-  return state;
 };

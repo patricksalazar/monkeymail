@@ -4,6 +4,8 @@ import React from 'react';
 import agent from '../agent';
 import { connect } from 'react-redux';
 
+import authHelper from '../utils/authHelper';
+
 const mapStateToProps = state => ({ ...state.auth });
 
 const mapDispatchToProps = dispatch => ({
@@ -73,11 +75,15 @@ class Login extends React.Component {
 
                   <button
                     className="btn btn-lg btn-primary pull-xs-right"
-                    type="submit"
                     disabled={this.props.inProgress}>
                     Sign in
                   </button>
-
+                  <div
+                    className="btn btn-lg pull-xs-right"
+                    disabled={this.props.inProgress}>
+                    Sign into&nbsp;
+                    <a href={authHelper.getAuthUrl()}>Outlook</a>
+                  </div>
                 </fieldset>
               </form>
             </div>
