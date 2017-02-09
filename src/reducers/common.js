@@ -34,6 +34,14 @@ export default (state = defaultState, action) => {
         token: action.error ? null : action.payload.user.token,
         currentUser: action.error ? null : action.payload.user
       };
+    case 'MS_LOGIN':
+      return {
+        ...state,
+        redirectTo: action.payload.error ? '/login' : '/editor',
+        error: action.payload.error ? action.payload.error : null,
+        token: action.payload.error ? null : action.payload.token,
+        currentUser: action.payload.error ? null : action.payload.user
+      }
     case 'DELETE_ARTICLE':
       return { ...state, redirectTo: '/' };
     case 'ARTICLE_PAGE_UNLOADED':

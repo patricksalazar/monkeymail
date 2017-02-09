@@ -8,6 +8,13 @@ export default (state = {}, action) => {
         isLoggedIn: !action.error,
         errors: action.error ? action.payload.errors : null
       };
+    case 'MS_LOGIN':
+      return {
+        ...state,
+        inProgress: false,
+        isLoggedIn: !action.error,
+        errors: action.error ? action.payload.errors : null
+      };
     case 'LOGIN_PAGE_UNLOADED':
     case 'REGISTER_PAGE_UNLOADED':
       return {};
